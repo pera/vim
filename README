@@ -18,3 +18,20 @@ Plugins:
   TagHighlight.vim
   timestamp.vim
   zencoding.vim
+
+Colors:
+  asu1dark.vim
+  autumn.vim
+  colorful.vim
+  doriath.vim
+  inkpot.vim
+  jellybeans.vim
+  mayansmoke.vim
+  paintbox.vim
+  rainbow_night.vim
+  rdark.vim
+  sift.vim
+  solarized.vim
+  summerfruit.vim
+  Tomorrow-Night-Blue.vim
+  vexorian.vim
