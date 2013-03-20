@@ -35,3 +35,6 @@ Colors:
   summerfruit.vim
   Tomorrow-Night-Blue.vim
   vexorian.vim
+
+Remember to update the help files:
+:helptags $VIMDIR/doc
