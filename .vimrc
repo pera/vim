@@ -77,6 +77,4 @@ if has("gui_running")
 	set guifont=-*-fixed-medium-r-normal-*-13-*-*-*-*-*-iso8859-1
 
 	colorscheme inkpot
-	hi TabLine guibg=black
-	hi TabLineFill guifg=black
 endif
