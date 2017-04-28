@@ -2,7 +2,8 @@ set nocompatible
 
 let $VIMDIR = matchstr(&rtp, '^.\{-}\ze,')
 
-filetype indent plugin on
+filetype plugin on
+filetype indent off
 syntax on
 
 set encoding=utf-8
@@ -20,15 +21,15 @@ set magic
 
 set whichwrap+=<,>,[,]
 set backspace=2
-set autoindent
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set smarttab
-set expandtab
 
-set cindent
-set cino=(0,u0,U0
+set autoindent
+set smartindent
+set tabstop=4
+set softtabstop=-1
+set shiftwidth=0
+set smarttab
+set copyindent
+set preserveindent
 
 set foldmethod=indent
 set foldlevelstart=99
@@ -51,6 +52,8 @@ set completeopt=menu,menuone
 
 set sessionoptions=blank,buffers,curdir,folds,help,tabpages,winsize
 
+set pastetoggle=<Leader>p
+
 " buffers mapping
 nnoremap g<SPACE> <C-S-^>
 nnoremap gl :ls<CR>
@@ -66,6 +69,10 @@ nmap <silent> <Leader>t :tab split<CR>
 " Clean search pattern (\c lean)
 nmap <silent> <Leader>c :let @/ = ""<CR>
 
+" Toggle visible tabs and trailing spaces (\i ndentation)
+set listchars=tab:>-,trail:<
+nmap <silent> <Leader>i :set list!<CR>
+
 " sudo tee trick
 cmap w!! w !sudo tee > /dev/null %
 
@@ -74,7 +81,13 @@ if has("gui_running")
 	set guioptions-=e
 	set lines=35 columns=110
 
-	set guifont=-*-fixed-medium-r-normal-*-13-*-*-*-*-*-iso8859-1
+	" set guifont=ProggyCleanTTSZBP\ 12
+	set guifont=Source\ Code\ Pro\ Medium\ 9
 
 	colorscheme inkpot
+else
+	if v:version >= 704
+		au ColorScheme * hi CursorLine cterm=NONE | hi CursorLineNr cterm=bold ctermfg=Red
+	endif
+	colorscheme ron
 endif
