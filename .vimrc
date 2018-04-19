@@ -48,6 +48,8 @@ set cursorline
 set laststatus=2
 set statusline+=b%n:\ %<%F\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 
+set listchars=tab:╾─,trail:•,space:·
+
 set completeopt=menu,menuone
 
 set sessionoptions=blank,buffers,curdir,folds,help,tabpages,winsize
@@ -55,7 +57,7 @@ set sessionoptions=blank,buffers,curdir,folds,help,tabpages,winsize
 set pastetoggle=<Leader>p
 
 " buffers mapping
-nnoremap g<SPACE> <C-S-^>
+nnoremap g<Space> <C-S-^>
 nnoremap gl :ls<CR>
 nnoremap gb :bn<CR>
 nnoremap gB :bN<CR>
@@ -64,17 +66,27 @@ nnoremap gB :bN<CR>
 xnoremap <expr> P 'pgv"'.v:register.'y'
 
 " Create new tab using current buffer (\t ab)
-nmap <silent> <Leader>t :tab split<CR>
+nnoremap <silent> <Leader>t :tab split<CR>
 
 " Clean search pattern (\c lean)
-nmap <silent> <Leader>c :let @/ = ""<CR>
+nnoremap <silent> <Leader>c :let @/ = ""<CR>
 
-" Toggle visible tabs and trailing spaces (\i ndentation)
-set listchars=tab:>-,trail:<
-nmap <silent> <Leader>i :set list!<CR>
+" Toggle visible tabs and spaces (\v isible)
+nnoremap <silent> <Leader>v :setlocal list!<CR>
+
+" Convert tab characters to space characters (\<Tab>)
+nnoremap <silent> <Leader><Tab> :setlocal noexpandtab <Bar> :%retab!<CR>
+vnoremap <silent> <Leader><Tab> :<C-U>setlocal noexpandtab <Bar> :retab!<CR>
+
+" Convert tab characters to space characters (\<Space>)
+nnoremap <silent> <Leader><Space> :setlocal expandtab <Bar> %retab<CR>
+vnoremap <silent> <Leader><Space> :<C-U>setlocal expandtab <Bar> '<,'>retab<CR>
+
+" Insert date in ISO 8601 format (\d ate)
+inoremap <silent> <Leader>d <C-R>=strftime("%FT%T%z")<CR>
 
 " sudo tee trick
-cmap w!! w !sudo tee > /dev/null %
+cnoremap w!! w !sudo tee > /dev/null %
 
 if has("gui_running")
 	set guioptions-=T
@@ -91,3 +103,4 @@ else
 	endif
 	colorscheme ron
 endif
+
