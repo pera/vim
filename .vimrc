@@ -76,7 +76,7 @@ nnoremap <silent> <Leader>v :setlocal list!<CR>
 
 " Convert tab characters to space characters (\<Tab>)
 nnoremap <silent> <Leader><Tab> :setlocal noexpandtab <Bar> :%retab!<CR>
-vnoremap <silent> <Leader><Tab> :<C-U>setlocal noexpandtab <Bar> :retab!<CR>
+vnoremap <silent> <Leader><Tab> :<C-U>setlocal noexpandtab <Bar> '<,'>retab!<CR>
 
 " Convert tab characters to space characters (\<Space>)
 nnoremap <silent> <Leader><Space> :setlocal expandtab <Bar> %retab<CR>
