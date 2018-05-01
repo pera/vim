@@ -48,7 +48,10 @@ set cursorline
 set laststatus=2
 set statusline+=b%n:\ %<%F\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 
-set listchars=tab:╾─,trail:•,space:·
+set listchars=tab:╾─,trail:•
+if has("patch-7.4.710")
+	set listchars+=space:·
+endif
 
 set completeopt=menu,menuone
 
